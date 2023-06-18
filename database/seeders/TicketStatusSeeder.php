@@ -3,35 +3,58 @@
 namespace Database\Seeders;
 
 use App\Models\TicketStatus;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class TicketStatusSeeder extends Seeder
 {
     private array $data = [
         [
-            'name' => 'Todo',
-            'color' => '#cecece',
+            'name' => 'Pendiente',
+            'color' => '#FFCC00',
             'is_default' => true,
-            'order' => 1
+            'order' => 1,
         ],
         [
-            'name' => 'In progress',
-            'color' => '#ff7f00',
+            'name' => 'Leído',
+            'color' => '#6633CC',
             'is_default' => false,
-            'order' => 2
+            'order' => 2,
         ],
         [
-            'name' => 'Done',
-            'color' => '#008000',
+            'name' => 'En curso',
+            'color' => '#3399FF',
             'is_default' => false,
-            'order' => 3
+            'order' => 3,
         ],
         [
-            'name' => 'Archived',
-            'color' => '#ff0000',
+            'name' => 'En revisión',
+            'color' => '#FF6600',
             'is_default' => false,
-            'order' => 4
+            'order' => 4,
+        ],
+        [
+            'name' => 'Completado',
+            'color' => '#33CC33',
+            'is_default' => false,
+            'order' => 5,
+        ],
+        [
+            'name' => 'Cancelado',
+            'color' => '#FF0000',
+            'is_default' => false,
+            'order' => 6,
+        ],
+        [
+            'name' => 'Pausado',
+            'color' => '#999999',
+            'is_default' => false,
+            'order' => 7,
+        ],
+        [
+            'name' => 'Devuelto',
+            'color' => '#F200F7',
+            'is_default' => false,
+            'order' => 8,
         ],
     ];
 
@@ -40,10 +63,11 @@ class TicketStatusSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         foreach ($this->data as $item) {
-            TicketStatus::firstOrCreate($item);
+            TicketStatus::query()
+                ->firstOrCreate(['name' => $item['name']],$item);
         }
     }
 }

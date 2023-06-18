@@ -9,19 +9,24 @@ class TicketPrioritySeeder extends Seeder
 {
     private array $data = [
         [
-            'name' => 'Low',
-            'color' => '#008000',
-            'is_default' => false
+            'name' => 'Baja',
+            'color' => '#00FF00',
+            'is_default' => false,
         ],
         [
             'name' => 'Normal',
-            'color' => '#CECECE',
-            'is_default' => true
+            'color' => '#FFFF00',
+            'is_default' => true,
         ],
         [
-            'name' => 'High',
-            'color' => '#ff0000',
-            'is_default' => false
+            'name' => 'Alta',
+            'color' => '#FFA500',
+            'is_default' => false,
+        ],
+        [
+            'name' => 'Urgente',
+            'color' => '#FF0000',
+            'is_default' => false,
         ],
     ];
 
@@ -30,10 +35,11 @@ class TicketPrioritySeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         foreach ($this->data as $item) {
-            TicketPriority::firstOrCreate($item);
+            TicketPriority::query()
+                ->firstOrCreate(['name' => $item['name']],$item);
         }
     }
 }

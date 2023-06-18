@@ -9,24 +9,24 @@ class ActivitySeeder extends Seeder
 {
     private array $data = [
         [
-            'name' => 'Programming',
-            'description' => 'Programming related activities'
+            'name' => 'Programación',
+            'description' => 'Actividades relacionadas con la programación',
         ],
         [
-            'name' => 'Testing',
-            'description' => 'Testing related activities'
+            'name' => 'Pruebas',
+            'description' => 'Actividades relacionadas con las pruebas',
         ],
         [
-            'name' => 'Learning',
-            'description' => 'Activities related to learning and training'
+            'name' => 'Aprendizaje',
+            'description' => 'Actividades relacionadas con el aprendizaje y la formación',
         ],
         [
-            'name' => 'Research',
-            'description' => 'Activities related to research'
+            'name' => 'Investigación',
+            'description' => 'Actividades relacionadas con la investigación',
         ],
         [
-            'name' => 'Other',
-            'description' => 'Other activities'
+            'name' => 'Otro',
+            'description' => 'Otras actividades',
         ],
     ];
 
@@ -35,10 +35,11 @@ class ActivitySeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         foreach ($this->data as $item) {
-            Activity::firstOrCreate($item);
+            Activity::query()
+                ->firstOrCreate(['name' => $item['name']],$item);
         }
     }
 }
