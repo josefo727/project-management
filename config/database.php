@@ -108,6 +108,8 @@ return [
 
     'migrations' => 'migrations',
 
+    'allow_disabled_pk' => env('ALLOW_DISABLED_PK', false),
+
     /*
     |--------------------------------------------------------------------------
     | Redis Databases

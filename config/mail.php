@@ -78,6 +78,10 @@ return [
                 'log',
             ],
         ],
+        'sparkpost' => [
+            'transport' => 'sparkpost',
+            'api_key' => env('SPARKPOST_API_KEY'),
+        ],
     ],
 
     /*

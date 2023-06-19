@@ -7,9 +7,13 @@ use Filament\Facades\Filament;
 use Illuminate\Database\QueryException;
 use Illuminate\Foundation\Vite;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Event;
+use Illuminate\Database\Events\MigrationsEnded;
+use Illuminate\Database\Events\MigrationsStarted;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -18,9 +22,9 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register(): void
     {
-        //
+        $this->setUpMigrations();
     }
 
     /**
@@ -28,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(): void
     {
         // Configure application
         $this->configureApp();
@@ -94,5 +98,23 @@ class AppServiceProvider extends ServiceProvider
         } catch (QueryException $e) {
             // Error: No database configured yet
         }
+    }
+
+    /**
+     * @return void
+     */
+    private function setUpMigrations(): void
+    {
+        Event::listen(MigrationsStarted::class, function () {
+            if (config('database.allow_disabled_pk')) {
+                DB::statement('SET SESSION sql_require_primary_key=0');
+            }
+        });
+
+        Event::listen(MigrationsEnded::class, function () {
+            if (config('database.allow_disabled_pk')) {
+                DB::statement('SET SESSION sql_require_primary_key=1');
+            }
+        });
     }
 }
