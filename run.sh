@@ -1,5 +1,9 @@
 #!/bin/bash
 
+rm -rf vendor node_modules
+composer install
+npm install
+
 linkPath=$(php -r "echo public_path('storage');")
 
 if [ ! -L "$linkPath" ]; then
