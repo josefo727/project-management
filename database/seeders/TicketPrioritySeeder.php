@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use App\Models\TicketPriority;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Schema;
 
 class TicketPrioritySeeder extends Seeder
 {
@@ -15,7 +16,7 @@ class TicketPrioritySeeder extends Seeder
         ],
         [
             'name' => 'Normal',
-            'color' => '#FFFF00',
+            'color' => '#007BFF',
             'is_default' => true,
         ],
         [
@@ -37,6 +38,9 @@ class TicketPrioritySeeder extends Seeder
      */
     public function run(): void
     {
+        Schema::disableForeignKeyConstraints();
+        TicketPriority::query()->truncate();
+        Schema::enableForeignKeyConstraints();
         foreach ($this->data as $item) {
             TicketPriority::query()
                 ->firstOrCreate(['name' => $item['name']],$item);

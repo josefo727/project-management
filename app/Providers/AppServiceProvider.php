@@ -51,9 +51,11 @@ class AppServiceProvider extends ServiceProvider
 
         // Register scripts
         try {
-            Filament::registerScripts([
-                app(Vite::class)('resources/js/filament.js'),
-            ]);
+            Filament::serving(function () {
+                Filament::registerScripts([
+                    app(Vite::class)('resources/js/filament.js'),
+                ]);
+            });
         } catch (\Exception $e) {
             // Manifest not built yet!
         }
@@ -74,7 +76,7 @@ class AppServiceProvider extends ServiceProvider
         ]);
 
         // Force HTTPS over HTTP
-        if (env('APP_FORCE_HTTPS') ?? false) {
+        if (env('APP_FORCE_HTTPS', false)) {
             URL::forceScheme('https');
         }
     }
@@ -82,13 +84,14 @@ class AppServiceProvider extends ServiceProvider
     private function configureApp(): void
     {
         try {
+            $asset = env('APP_FORCE_HTTPS', false) ? 'secure_asset' : 'asset';
             $settings = app(GeneralSettings::class);
             Config::set('app.locale', $settings->site_language ?? config('app.fallback_locale'));
             Config::set('app.name', $settings->site_name ?? env('APP_NAME'));
             Config::set('filament.brand', $settings->site_name ?? env('APP_NAME'));
             Config::set(
                 'app.logo',
-                $settings->site_logo ? asset('storage/' . $settings->site_logo) : asset('favicon.ico')
+                $settings->site_logo ? $asset('storage/' . $settings->site_logo) : $asset('favicon.ico')
             );
             Config::set('filament-breezy.enable_registration', $settings->enable_registration ?? false);
             Config::set('filament-socialite.registration', $settings->enable_registration ?? false);

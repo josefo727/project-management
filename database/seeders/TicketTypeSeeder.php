@@ -4,34 +4,45 @@ namespace Database\Seeders;
 
 use App\Models\TicketType;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 class TicketTypeSeeder extends Seeder
 {
     private array $data = [
         [
+            'name' => 'Daily',
+            'icon' => 'heroicon-o-clock',
+            'color' => '#FF1493',
+            'is_default' => false,
+        ],
+        [
+            'name' => 'Reunión de trabajo',
+            'icon' => 'heroicon-o-users',
+            'color' => '#FF4500',
+            'is_default' => false,
+        ],
+        [
             'name' => 'Tarea',
             'icon' => 'heroicon-o-check-circle',
-            'color' => '#00FFFF',
+            'color' => '#00FF00',
             'is_default' => true,
         ],
         [
             'name' => 'Evolución',
             'icon' => 'heroicon-o-clipboard-list',
-            'color' => '#008000',
+            'color' => '#FFFF00',
             'is_default' => false,
         ],
         [
             'name' => 'Error',
             'icon' => 'heroicon-o-x',
-            'color' => '#ff0000',
+            'color' => '#FF0000',
             'is_default' => false,
         ],
         [
             'name' => 'Mejora',
             'icon' => 'heroicon-o-sparkles',
-            'color' => '#FFD700',
+            'color' => '#FFA500',
             'is_default' => false,
         ],
         [
@@ -43,31 +54,19 @@ class TicketTypeSeeder extends Seeder
         [
             'name' => 'Investigación',
             'icon' => 'heroicon-o-search',
-            'color' => '#FFA500',
-            'is_default' => false,
-        ],
-        [
-            'name' => 'Solicitud de funcionalidad',
-            'icon' => 'heroicon-o-lightning-bolt',
-            'color' => '#FFFF00',
+            'color' => '#FF8C00',
             'is_default' => false,
         ],
         [
             'name' => 'Mantenimiento',
             'icon' => 'fas-screwdriver-wrench',
-            'color' => '#FF8C00',
+            'color' => '#800080',
             'is_default' => false,
         ],
         [
             'name' => 'Soporte',
             'icon' => 'heroicon-o-hand',
             'color' => '#0000FF',
-            'is_default' => false,
-        ],
-        [
-            'name' => 'Cambio de requisitos',
-            'icon' => 'heroicon-o-refresh',
-            'color' => '#9400D3',
             'is_default' => false,
         ],
         [
@@ -86,7 +85,7 @@ class TicketTypeSeeder extends Seeder
     public function run(): void
     {
         Schema::disableForeignKeyConstraints();
-        DB::table('ticket_types')->truncate();
+        TicketType::query()->truncate();
         Schema::enableForeignKeyConstraints();
         foreach ($this->data as $item) {
             TicketType::query()
