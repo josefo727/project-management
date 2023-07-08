@@ -8,11 +8,12 @@ use App\Models\Activity;
 use App\Models\TicketComment;
 use App\Models\TicketHour;
 use App\Models\TicketSubscriber;
+use Carbon\Carbon;
+use Filament\Forms\Components\DateTimePicker;
 use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Actions\Action;
@@ -97,6 +98,9 @@ class ViewTicket extends ViewRecord implements HasForms
                     [$this->record->owner_id, $this->record->responsible_id]
                 ))
                 ->form([
+                    DateTimePicker::make('start_time')
+                        ->label(__('Start time') . ' (' . __('Optional') . ')')
+                        ->withoutSeconds(),
                     TextInput::make('time')
                         ->label(__('Time to log'))
                         ->numeric()
@@ -113,6 +117,7 @@ class ViewTicket extends ViewRecord implements HasForms
                         ->rows(3),
                 ])
                 ->action(function (Collection $records, array $data): void {
+                    $createdAt = $data['start_time'];
                     $value = $data['time'];
                     $comment = $data['comment'];
                     TicketHour::create([
@@ -120,7 +125,8 @@ class ViewTicket extends ViewRecord implements HasForms
                         'activity_id' => $data['activity_id'],
                         'user_id' => auth()->user()->id,
                         'value' => $value,
-                        'comment' => $comment
+                        'comment' => $comment,
+                        'created_at' => Carbon::parse($createdAt),
                     ]);
                     $this->record->refresh();
                     $this->notify('success', __('Time logged into ticket'));
