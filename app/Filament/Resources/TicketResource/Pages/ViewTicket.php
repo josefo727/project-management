@@ -14,6 +14,7 @@ use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\TimePicker;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Notifications\Actions\Action;
@@ -101,9 +102,9 @@ class ViewTicket extends ViewRecord implements HasForms
                     DateTimePicker::make('start_time')
                         ->label(__('Start time') . ' (' . __('Optional') . ')')
                         ->withoutSeconds(),
-                    TextInput::make('time')
+                    TimePicker::make('time')
                         ->label(__('Time to log'))
-                        ->numeric()
+                        ->withoutSeconds()
                         ->required(),
                     Select::make('activity_id')
                         ->label(__('Activity'))
@@ -117,8 +118,9 @@ class ViewTicket extends ViewRecord implements HasForms
                         ->rows(3),
                 ])
                 ->action(function (Collection $records, array $data): void {
-                    $createdAt = $data['start_time'];
-                    $value = $data['time'];
+                    $createdAt = Carbon::parse($data['start_time']);
+                    $carbon = Carbon::createFromFormat('H:i', $data['time']);
+                    $value = $carbon->hour + ($carbon->minute / 60);
                     $comment = $data['comment'];
                     TicketHour::create([
                         'ticket_id' => $this->record->id,
@@ -126,7 +128,7 @@ class ViewTicket extends ViewRecord implements HasForms
                         'user_id' => auth()->user()->id,
                         'value' => $value,
                         'comment' => $comment,
-                        'created_at' => Carbon::parse($createdAt),
+                        'created_at' => $createdAt,
                     ]);
                     $this->record->refresh();
                     $this->notify('success', __('Time logged into ticket'));
