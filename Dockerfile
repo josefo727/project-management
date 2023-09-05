@@ -30,7 +30,8 @@ RUN docker-php-ext-configure gd --with-jpeg=/usr/include/ \
     mbstring \
     pdo_mysql \
     xml \
-    zip
+    zip \
+    exif
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
