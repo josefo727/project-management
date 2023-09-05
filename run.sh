@@ -16,7 +16,8 @@ fi
 
 git pull
 
-php artisan queue:work &
+php artisan key:generate
 php artisan migrate
 npm run build
 php artisan optimize:clear
+php artisan queue:work &
