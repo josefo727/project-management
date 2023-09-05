@@ -64,16 +64,12 @@ class User extends Authenticatable implements MustVerifyEmail, FilamentUser
         parent::boot();
 
         static::creating(function (User $item) {
-            if ($item->type == 'db') {
-                $item->password = bcrypt(uniqid());
-                $item->creation_token = Uuid::uuid4()->toString();
-            }
+            $item->password = bcrypt(uniqid());
+            $item->creation_token = Uuid::uuid4()->toString();
         });
 
         static::created(function (User $item) {
-            if ($item->type == 'db') {
-                $item->notify(new UserCreatedNotification($item));
-            }
+            $item->notify(new UserCreatedNotification($item));
         });
     }
 

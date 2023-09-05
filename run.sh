@@ -14,9 +14,9 @@ else
     echo "El enlace simbólico ya existe. No se ejecutó el comando."
 fi
 
+git pull
+
 php artisan queue:work &
 php artisan migrate
-# php artisan db:seed
 npm run build
 php artisan optimize:clear
-php artisan serve --host 0.0.0.0
