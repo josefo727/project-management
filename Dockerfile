@@ -1,57 +1,27 @@
-# Use PHP 8.2 FPM Alpine as base image
-FROM php:8.2-fpm-alpine
+# syntax=docker/dockerfile:1
 
-# Install system dependencies
-RUN apk update && apk add --no-cache \
-    git \
-    curl \
-    libpng-dev \
-    libjpeg-turbo-dev \
-    oniguruma-dev \
-    libxml2-dev \
-    zip \
-    unzip \
-    libzip-dev \
-    openssh-client \
-    nginx \
-    supervisor \
-    nano \
-    vim \
-    nodejs \
-    npm
+#Deriving the latest base image
+FROM node:16.17.0-bullseye-slim
 
-# Install PHP extensions
-RUN docker-php-ext-configure gd --with-jpeg=/usr/include/ \
-    && docker-php-ext-install \
-    gd \
-    bcmath \
-    ctype \
-    fileinfo \
-    mbstring \
-    pdo_mysql \
-    xml \
-    zip \
-    exif
-
-# Get latest Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-# Set working directory
+# Any working directory can be chosen as per choice like '/' or '/home' etc
 WORKDIR /app
 
-# Remove default server configuration
-RUN rm /etc/nginx/nginx.conf
+COPY .env.example .env
 
-# Copy nginx and supervisor configuration
-COPY ./docker/nginx.conf /etc/nginx/nginx.conf
-COPY ./docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-COPY ./docker/php.ini /usr/local/etc/php/conf.d/99-custom.ini
+COPY . .
 
-# Set permissions
-RUN chown -R www-data:www-data .
+RUN apt-get update -y && \
+    apt-get install -y --no-install-recommends software-properties-common gnupg2 wget && \
+    echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/sury-php.list && \
+    wget -qO - https://packages.sury.org/php/apt.gpg | apt-key add - && \
+    apt-get update -y && \
+    apt-get install -y --no-install-recommends php8.1 php8.1-curl php8.1-xml php8.1-zip php8.1-gd php8.1-mbstring php8.1-mysql && \
+    apt-get update -y && \
+    apt-get install -y composer && \
+    composer update && \
+    composer install && \
+    npm install && \
+    php artisan key:generate && \
+    rm -rf /var/lib/apt/lists/*
 
-# Start Nginx and PHP-FPM via Supervisor
-CMD ["/usr/bin/supervisord", "-n", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
-
-# Expose port 80
-EXPOSE 80
+CMD [ "bash", "./run.sh"]
