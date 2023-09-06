@@ -17,3 +17,7 @@ COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Ensure all of our files are owned by the same user and group.
 RUN chown -R application:application .
+
+# Expose port 80
+EXPOSE 80
+
