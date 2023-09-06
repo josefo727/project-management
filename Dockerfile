@@ -1,27 +1,13 @@
-# syntax=docker/dockerfile:1
+FROM webdevops/php-nginx:8.2-alpine
 
-#Deriving the latest base image
-FROM node:16.17.0-bullseye-slim
+ENV WEB_DOCUMENT_ROOT=/app/public
 
-# Any working directory can be chosen as per choice like '/' or '/home' etc
+ENV PHP_DISMOD=bz2,calendar,exiif,ffi,intl,gettext,ldap,mysqli,imap,pdo_pgsql,pgsql,soap,sockets,sysvmsg,sysvsm,sysvshm,shmop,xsl,apcu,vips,yaml,imagick,mongodb,amqp
+
 WORKDIR /app
 
-COPY .env.example .env
+# Instalar Node.js y npm
+RUN apk add --update nodejs npm
 
-COPY . .
-
-RUN apt-get update -y && \
-    apt-get install -y --no-install-recommends software-properties-common gnupg2 wget && \
-    echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | tee /etc/apt/sources.list.d/sury-php.list && \
-    wget -qO - https://packages.sury.org/php/apt.gpg | apt-key add - && \
-    apt-get update -y && \
-    apt-get install -y --no-install-recommends php8.1 php8.1-curl php8.1-xml php8.1-zip php8.1-gd php8.1-mbstring php8.1-mysql && \
-    apt-get update -y && \
-    apt-get install -y composer && \
-    composer update && \
-    composer install && \
-    npm install && \
-    php artisan key:generate && \
-    rm -rf /var/lib/apt/lists/*
-
-CMD [ "bash", "./run.sh"]
+# Ensure all of our files are owned by the same user and group.
+RUN chown -R application:application .
