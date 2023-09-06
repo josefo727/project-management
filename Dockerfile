@@ -9,5 +9,11 @@ WORKDIR /app
 # Instalar Node.js y npm
 RUN apk add --update nodejs npm
 
+# Instalar supervisord
+RUN apk add --no-cache supervisor
+
+# Copiar el archivo de configuración de supervisord
+COPY docker/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
 # Ensure all of our files are owned by the same user and group.
 RUN chown -R application:application .

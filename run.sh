@@ -18,7 +18,7 @@ else
     php artisan key:generate
 fi
 
-php artisan migrate
+php artisan migrate --force
 php artisan optimize:clear
 if [ ! -L public/storage ]; then
     php artisan storage:link
