@@ -21,11 +21,13 @@ class ListProjects extends ListRecords
     protected function getTableQuery(): Builder
     {
         return parent::getTableQuery()
-            ->where(function ($query) {
-                return $query->where('owner_id', auth()->user()->id)
-                    ->orWhereHas('users', function ($query) {
-                        return $query->where('users.id', auth()->user()->id);
-                    });
+            ->when(! auth()->user()->isSuperAdmin(), function ($query) {
+                $query->where(function ($query) {
+                    return $query->where('owner_id', auth()->user()->id)
+                        ->orWhereHas('users', function ($query) {
+                            return $query->where('users.id', auth()->user()->id);
+                        });
+                });
             });
     }
 }

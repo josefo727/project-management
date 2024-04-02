@@ -6,7 +6,6 @@ use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
 use App\Settings\GeneralSettings;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Str;
 
@@ -15,23 +14,23 @@ class PermissionsSeeder extends Seeder
     private array $modules = [
         'permission', 'project', 'project status', 'role', 'ticket',
         'ticket priority', 'ticket status', 'ticket type', 'user',
-        'activity', 'sprint'
+        'activity', 'sprint',
     ];
 
     private array $pluralActions = [
-        'List'
+        'List',
     ];
 
     private array $singularActions = [
-        'View', 'Create', 'Update', 'Delete'
+        'View', 'Create', 'Update', 'Delete',
     ];
 
     private array $extraPermissions = [
         'Manage general settings', 'Import from Jira',
-        'List timesheet data', 'View timesheet dashboard'
+        'List timesheet data', 'View timesheet dashboard',
     ];
 
-    private string $defaultRole = 'Default role';
+    private string $globalRole = 'Super Admin';
 
     /**
      * Run the database seeds.
@@ -45,26 +44,26 @@ class PermissionsSeeder extends Seeder
             $plural = Str::plural($module);
             $singular = $module;
             foreach ($this->pluralActions as $action) {
-                Permission::firstOrCreate([
-                    'name' => $action . ' ' . $plural
+                Permission::query()->firstOrCreate([
+                    'name' => $action.' '.$plural,
                 ]);
             }
             foreach ($this->singularActions as $action) {
-                Permission::firstOrCreate([
-                    'name' => $action . ' ' . $singular
+                Permission::query()->firstOrCreate([
+                    'name' => $action.' '.$singular,
                 ]);
             }
         }
 
         foreach ($this->extraPermissions as $permission) {
-            Permission::firstOrCreate([
-                'name' => $permission
+            Permission::query()->firstOrCreate([
+                'name' => $permission,
             ]);
         }
 
         // Create default role
-        $role = Role::firstOrCreate([
-            'name' => $this->defaultRole
+        $role = Role::query()->firstOrCreate([
+            'name' => $this->globalRole,
         ]);
         $settings = app(GeneralSettings::class);
         $settings->default_role = $role->id;
@@ -74,8 +73,8 @@ class PermissionsSeeder extends Seeder
         $role->syncPermissions(Permission::all()->pluck('name')->toArray());
 
         // Assign default role to first database user
-        if ($user = User::first()) {
-            $user->syncRoles([$this->defaultRole]);
+        if ($user = User::query()->first()) {
+            $user->syncRoles([$this->globalRole]);
         }
     }
 }

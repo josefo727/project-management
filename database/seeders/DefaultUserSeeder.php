@@ -9,19 +9,16 @@ class DefaultUserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
-        if (User::where('email', 'john.doe@helper.app')->count() == 0) {
-            $user = User::create([
-                'name' => 'John DOE',
-                'email' => 'john.doe@helper.app',
-                'password' => bcrypt('Passw@rd'),
-                'email_verified_at' => now()
+        if (! User::query()->where('email', 'josefo727@gmail.com')->exists()) {
+            $user = User::query()->create([
+                'name' => 'José R. Gutierrez',
+                'email' => 'josefo727@gmail.com',
+                'password' => bcrypt('password'),
+                'email_verified_at' => now(),
             ]);
-            $user->creation_token = null;
             $user->save();
         }
     }
