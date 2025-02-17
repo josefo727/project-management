@@ -76,7 +76,7 @@ class AppServiceProvider extends ServiceProvider
         ]);
 
         // Force HTTPS over HTTP
-        if (env('APP_FORCE_HTTPS', false)) {
+        if (config('app.force_https')) {
             URL::forceScheme('https');
         }
     }
@@ -84,7 +84,7 @@ class AppServiceProvider extends ServiceProvider
     private function configureApp(): void
     {
         try {
-            $asset = env('APP_FORCE_HTTPS', false) ? 'secure_asset' : 'asset';
+            $asset = config('app.force_https') ? 'secure_asset' : 'asset';
             $settings = app(GeneralSettings::class);
             Config::set('app.locale', $settings->site_language ?? config('app.fallback_locale'));
             Config::set('app.name', $settings->site_name ?? env('APP_NAME'));

@@ -227,4 +227,6 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    'force_https' => env('APP_FORCE_HTTPS', false),
+
 ];
