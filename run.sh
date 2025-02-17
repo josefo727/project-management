@@ -2,9 +2,6 @@
 
 set -e
 
-pkill -f "php artisan queue:work" || true
-pkill -f "php artisan schedule:work" || true
-
 php artisan down
 
 rm -rf vendor node_modules
@@ -32,6 +29,3 @@ npm run build
 chown -R application:application .
 
 php artisan up
-
-php artisan queue:work >/dev/null 2>&1 &
-php artisan schedule:work >/dev/null 2>&1 &
