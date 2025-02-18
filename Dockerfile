@@ -11,8 +11,6 @@ RUN sed -i 's/v3\.21/v3.20/g' /etc/apk/repositories && \
 
 RUN apk add --no-cache supervisor
 
-COPY docker/supervisord.conf /opt/docker/etc/supervisor.d/system.conf
-
 RUN chown -R application:application .
 
 EXPOSE 80
