@@ -76,7 +76,12 @@ class Attachments extends Component implements HasForms, HasTable
             TextColumn::make('name')
                 ->label(__('Name'))
                 ->sortable()
-                ->searchable(),
+                ->searchable()
+                ->url(function ($record) {
+                    $attachmentId = $record->id;
+                    $attachmentFile = $record->file_name;
+                    return asset('storage/' . $attachmentId . '/' . $attachmentFile);
+                }, true),
 
             TextColumn::make('human_readable_size')
                 ->label(__('Size'))
