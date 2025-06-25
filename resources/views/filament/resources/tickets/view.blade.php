@@ -64,7 +64,7 @@
                 </div>
             </div>
 
-            <div class="w-full flex flex-col gap-1" wire:ignore>
+            <div class="w-full flex flex-col gap-1 pt-3" wire:ignore>
                 <span class="text-gray-500 text-sm font-medium">
                     {{ __('Owner') }}
                 </span>
