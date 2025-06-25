@@ -81,7 +81,7 @@ class Ticket extends Model implements HasMedia
         return $this->belongsTo(User::class, 'creator_id', 'id');
     }
 
-public function owner(): BelongsTo
+    public function owner(): BelongsTo
     {
         return $this->belongsTo(User::class, 'owner_id', 'id');
     }
@@ -155,7 +155,7 @@ public function owner(): BelongsTo
     {
         return new Attribute(
             get: function () {
-                $users = $this->project->users;
+                $users = collect();
                 $users->push($this->owner);
                 if ($this->responsible) {
                     $users->push($this->responsible);
