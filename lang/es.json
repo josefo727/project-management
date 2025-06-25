@@ -263,5 +263,6 @@
 	"Invalid account!": "¡Cuenta no válida!",
 	"OIDC Connect": "Conexión OIDC",
 	"Optional": "Opcional",
-	"Start time": "Hora de inicio"
+	"Start time": "Hora de inicio",
+    "Created by": "Creado por"
 }
