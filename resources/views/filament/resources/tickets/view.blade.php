@@ -54,6 +54,18 @@
         <x-filament::card class="md:w-1/3 w-full flex flex-col">
             <div class="w-full flex flex-col gap-1" wire:ignore>
                 <span class="text-gray-500 text-sm font-medium">
+                    {{ __('Created by') }}
+                </span>
+                <div class="w-full flex items-center gap-1 text-gray-500">
+                    @if($record->creator)
+                        <x-user-avatar :user="$record->creator"/>
+                    @endif
+                    {{ $record->creator?->name ?? '-' }}
+                </div>
+            </div>
+
+            <div class="w-full flex flex-col gap-1" wire:ignore>
+                <span class="text-gray-500 text-sm font-medium">
                     {{ __('Owner') }}
                 </span>
                 <div class="w-full flex items-center gap-1 text-gray-500">
@@ -323,10 +335,10 @@
                 </div>
             @endif
             @if($tab === 'time')
-                <livewire:timesheet.time-logged :ticket="$record" />
+                <livewire:timesheet.time-logged :ticket="$record"/>
             @endif
             @if($tab === 'attachments')
-                <livewire:ticket.attachments :ticket="$record" />
+                <livewire:ticket.attachments :ticket="$record"/>
             @endif
         </x-filament::card>
 

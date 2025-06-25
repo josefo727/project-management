@@ -20,7 +20,7 @@ class Ticket extends Model implements HasMedia
     use HasFactory, SoftDeletes, InteractsWithMedia;
 
     protected $fillable = [
-        'name', 'content', 'owner_id', 'responsible_id',
+        'name', 'content', 'creator_id', 'owner_id', 'responsible_id',
         'status_id', 'project_id', 'code', 'order', 'type_id',
         'priority_id', 'estimation', 'epic_id', 'sprint_id'
     ];
@@ -35,6 +35,9 @@ class Ticket extends Model implements HasMedia
             $order = $project->tickets?->last()?->order ?? -1;
             $item->code = $project->ticket_prefix . '-' . ($count + 1);
             $item->order = $order + 1;
+            if (auth()->check()) {
+                $item->creator_id = auth()->id();
+            }
         });
 
         static::created(function (Ticket $item) {
@@ -73,7 +76,12 @@ class Ticket extends Model implements HasMedia
         });
     }
 
-    public function owner(): BelongsTo
+    public function creator(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'creator_id', 'id');
+    }
+
+public function owner(): BelongsTo
     {
         return $this->belongsTo(User::class, 'owner_id', 'id');
     }
