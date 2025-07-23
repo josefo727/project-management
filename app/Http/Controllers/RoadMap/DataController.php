@@ -29,7 +29,7 @@ class DataController extends Controller
         if (!$project) {
             return response()->json([]);
         }
-        $epics = Epic::where('project_id', $project->id)->get();
+        $epics = Epic::with(['tickets.responsible'])->where('project_id', $project->id)->get();
         return response()->json($this->formatResponse($epics, $project));
     }
 

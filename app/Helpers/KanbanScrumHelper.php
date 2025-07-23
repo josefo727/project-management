@@ -31,6 +31,9 @@ trait KanbanScrumHelper
 
     public bool $ticket = false;
 
+    protected ?Collection $cachedRecords = null;
+    protected ?Collection $cachedStatuses = null;
+
     protected function formSchema(): array
     {
         return [
@@ -80,37 +83,48 @@ trait KanbanScrumHelper
 
     public function getStatuses(): Collection
     {
+        if ($this->cachedStatuses) {
+            return $this->cachedStatuses;
+        }
+
         $query = TicketStatus::query();
         if ($this->project && $this->project->status_type === 'custom') {
             $query->where('project_id', $this->project->id);
         } else {
             $query->whereNull('project_id');
         }
-        return $query->orderBy('order')
+        $query->withCount(['tickets' => function ($query) {
+            if ($this->project) {
+                $query->where('project_id', $this->project->id);
+            }
+        }]);
+
+        $this->cachedStatuses = $query->orderBy('order')
             ->get()
             ->map(function ($item) {
-                $query = Ticket::query();
-                if ($this->project) {
-                    $query->where('project_id', $this->project->id);
-                }
-                $query->where('status_id', $item->id);
                 return [
                     'id' => $item->id,
                     'title' => $item->name,
                     'color' => $item->color,
-                    'size' => $query->count(),
+                    'size' => $item->tickets_count,
                     'add_ticket' => $item->is_default && auth()->user()->can('Create ticket')
                 ];
             });
+
+        return $this->cachedStatuses;
     }
 
     public function getRecords(): Collection
     {
+        if ($this->cachedRecords) {
+            return $this->cachedRecords;
+        }
+
         $query = Ticket::query();
         if ($this->project->type === 'scrum') {
             $query->where('sprint_id', $this->project->currentSprint->id);
         }
-        $query->with(['project', 'owner', 'responsible', 'status', 'type', 'priority', 'epic']);
+        $query->with(['project', 'owner', 'responsible', 'status', 'type', 'priority', 'epic', 'relations.relation', 'hours']);
         $query->where('project_id', $this->project->id);
         if (sizeof($this->users)) {
             $query->where(function ($query) {
@@ -137,7 +151,8 @@ trait KanbanScrumHelper
                         });
                 });
         });
-        return $query->get()
+
+        $this->cachedRecords = $query->get()
             ->map(fn(Ticket $item) => [
                 'id' => $item->id,
                 'code' => $item->code,
@@ -152,6 +167,8 @@ trait KanbanScrumHelper
                 'relations' => $item->relations,
                 'totalLoggedHours' => $item->totalLoggedSeconds ? $item->totalLoggedHours : null
             ]);
+
+        return $this->cachedRecords;
     }
 
     public function recordUpdated(int $record, int $newIndex, int $newStatus): void
@@ -162,6 +179,8 @@ trait KanbanScrumHelper
             $ticket->status_id = $newStatus;
             $ticket->save();
             Filament::notify('success', __('Ticket updated'));
+            $this->cachedRecords = null;
+            $this->cachedStatuses = null;
         }
     }
 
@@ -172,6 +191,8 @@ trait KanbanScrumHelper
 
     public function filter(): void
     {
+        $this->cachedRecords = null;
+        $this->cachedStatuses = null;
         $this->getRecords();
     }
 

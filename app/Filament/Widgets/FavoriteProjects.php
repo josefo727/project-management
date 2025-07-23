@@ -27,16 +27,16 @@ class FavoriteProjects extends BaseWidget
 
     protected function getCards(): array
     {
-        $favoriteProjects = auth()->user()->favoriteProjects;
+        $favoriteProjects = auth()->user()->favoriteProjects()->withCount(['tickets', 'contributors'])->get();
         $cards = [];
         foreach ($favoriteProjects as $project) {
-            $ticketsCount = $project->tickets()->count();
-            $contributorsCount = $project->contributors->count();
+            $ticketsCount = $project->tickets_count;
+            $contributorsCount = $project->contributors_count;
             $cards[] = Card::make('', new HtmlString('
                     <div class="flex items-center gap-2 -mt-2 text-lg">
-                        <div style=\'background-image: url("' . $project->cover . '")\'
+                        <div style=\'background-image: url("'. $project->cover . '")\'
                              class="w-8 h-8 bg-cover bg-center bg-no-repeat"></div>
-                        <span>' . $project->name . '</span>
+                        <span>'. $project->name . '</span>
                     </div>
                 '))
                 ->color('success')
@@ -57,13 +57,13 @@ class FavoriteProjects extends BaseWidget
                         . '</div>
                         <div class="text-xs w-full flex items-center gap-2 mt-2">
                             <a class="text-primary-400 hover:text-primary-500 hover:cursor-pointer"
-                               href="' . route('filament.resources.projects.view', $project) . '">
-                                ' . __('View details') . '
+                               href="'. route('filament.resources.projects.view', $project) . '">
+                                '. __('View details') . '
                             </a>
                             <span class="text-gray-300">|</span>
                             <a class="text-primary-400 hover:text-primary-500 hover:cursor-pointer"
-                               href="' . route('filament.pages.kanban/{project}', ['project' => $project->id]) . '">
-                                ' . __('Tickets') . '
+                               href="'. route('filament.pages.kanban/{project}', ['project' => $project->id]) . '">
+                                '. __('Tickets') . '
                             </a>
                         </div>
                     '));

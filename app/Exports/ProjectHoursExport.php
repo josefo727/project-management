@@ -37,7 +37,9 @@ class ProjectHoursExport implements FromCollection, WithHeadings
     public function collection(): Collection
     {
         $collection = collect();
-        $this->project->tickets
+        $tickets = $this->project->tickets()->with(['hours.user', 'hours.activity'])->get();
+
+        $tickets
             ->filter(fn($ticket) => $ticket->hours()->count())
             ->each(fn ($ticket) =>
                 $ticket->hours
