@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Widgets;
+namespace Appilament\Widgets;
 
 use Filament\Widgets\StatsOverviewWidget as BaseWidget;
 use Filament\Widgets\StatsOverviewWidget\Card;
@@ -27,11 +27,11 @@ class FavoriteProjects extends BaseWidget
 
     protected function getCards(): array
     {
-        $favoriteProjects = auth()->user()->favoriteProjects()->withCount(['tickets', 'contributors'])->get();
+        $favoriteProjects = auth()->user()->favoriteProjects()->with('users', 'owner')->withCount('tickets')->get();
         $cards = [];
         foreach ($favoriteProjects as $project) {
             $ticketsCount = $project->tickets_count;
-            $contributorsCount = $project->contributors_count;
+            $contributorsCount = $project->contributors->count();
             $cards[] = Card::make('', new HtmlString('
                     <div class="flex items-center gap-2 -mt-2 text-lg">
                         <div style=\'background-image: url("'. $project->cover . '")\'
