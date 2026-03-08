@@ -8,7 +8,7 @@
                 {{ $record['project']->name }}
             </span>
         @endif
-        <a href="{{ route('filament.resources.tickets.view', $record['id']) }}"
+        <a href="{{ route('filament.resources.tickets.view', $record['code']) }}"
            target="_blank"
            class="record-title">
             <span class="code">{{ $record['code'] }}</span>

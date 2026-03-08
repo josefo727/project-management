@@ -95,7 +95,7 @@
                         if (meta.epic) {
                             Livewire.emit('updateEpic', meta.id);
                         } else {
-                            window.open('/tickets/share/' + meta.slug, '_blank');
+                            window.open('/tickets/' + meta.slug, '_blank');
                         }
                     }
                 }

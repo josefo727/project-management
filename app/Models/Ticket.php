@@ -19,6 +19,11 @@ class Ticket extends Model implements HasMedia
 {
     use HasFactory, SoftDeletes, InteractsWithMedia;
 
+    public function getRouteKeyName(): string
+    {
+        return 'code';
+    }
+
     protected $fillable = [
         'name', 'content', 'creator_id', 'owner_id', 'responsible_id',
         'status_id', 'project_id', 'code', 'order', 'type_id',
