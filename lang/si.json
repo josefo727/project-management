@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "වේදිකා පෙරනිමි භූමිකාව (ප්‍රධාන වශයෙන් OIDC සම්බන්ධකයේ භාවිතා වේ).",
     "OIDC Connect error": "OIDC සම්බන්ධක දෝෂයකි",
     "Invalid account!": "වලංගු නොවන ගිණුමක්!",
-    "OIDC Connect": "OIDC සම්බන්ධතාවය"
+    "OIDC Connect": "OIDC සම්බන්ධතාවය",
+    "Load more": "තවත් පූරණය කරන්න",
+    "Loading board...": "පුවරුව පූරණය වෙමින්..."
 }

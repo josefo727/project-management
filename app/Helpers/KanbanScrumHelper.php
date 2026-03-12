@@ -22,6 +22,7 @@ trait KanbanScrumHelper
 
     public bool $sortable = true;
     public bool $boardLoaded = false;
+    public int $recordsPerStatus = 20;
 
     public Project|null $project = null;
 
@@ -31,6 +32,8 @@ trait KanbanScrumHelper
     public $includeNotAffectedTickets = false;
 
     public bool $ticket = false;
+
+    public array $visibleLimits = [];
 
     protected ?Collection $cachedRecords = null;
     protected ?Collection $cachedStatuses = null;
@@ -179,6 +182,16 @@ trait KanbanScrumHelper
         $this->boardLoaded = true;
     }
 
+    public function getVisibleLimit(int $statusId): int
+    {
+        return $this->visibleLimits[$statusId] ?? $this->recordsPerStatus;
+    }
+
+    public function loadMore(int $statusId): void
+    {
+        $this->visibleLimits[$statusId] = $this->getVisibleLimit($statusId) + $this->recordsPerStatus;
+    }
+
     public function isMultiProject(): bool
     {
         return $this->project === null;
@@ -188,6 +201,7 @@ trait KanbanScrumHelper
     {
         $this->cachedRecords = null;
         $this->cachedStatuses = null;
+        $this->visibleLimits = [];
         $this->getRecords();
     }
 

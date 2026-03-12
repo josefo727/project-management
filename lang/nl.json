@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "De standaard platformrol (voornamelijk gebruikt in OIDC Connect).",
     "OIDC Connect error": "OIDC Connect-fout",
     "Invalid account!": "Ongeldig account!",
-    "OIDC Connect": "OIDC Connect"
+    "OIDC Connect": "OIDC Connect",
+    "Load more": "Meer laden",
+    "Loading board...": "Bord laden..."
 }

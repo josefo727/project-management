@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "A platform alapértelmezett szerepköre (főleg az OIDC Connectben használatos).",
     "OIDC Connect error": "OIDC Connect hiba",
     "Invalid account!": "Érvénytelen fiók!",
-    "OIDC Connect": "OIDC csatlakozás"
+    "OIDC Connect": "OIDC csatlakozás",
+    "Load more": "Több betöltése",
+    "Loading board...": "Tábla betöltése..."
 }

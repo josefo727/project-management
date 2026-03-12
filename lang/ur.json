@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "پلیٹ فارم ڈیفالٹ رول (بنیادی طور پر OIDC کنیکٹ میں استعمال ہوتا ہے)۔",
     "OIDC Connect error": "OIDC کنیکٹ کی خرابی۔",
     "Invalid account!": "غلط اکاؤنٹ!",
-    "OIDC Connect": "OIDC کنیکٹ"
+    "OIDC Connect": "OIDC کنیکٹ",
+    "Load more": "مزید لوڈ کریں",
+    "Loading board...": "بورڈ لوڈ ہو رہا ہے..."
 }

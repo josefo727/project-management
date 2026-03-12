@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Privzeta vloga platforme (uporablja se predvsem v OIDC Connect).",
     "OIDC Connect error": "Napaka OIDC Connect",
     "Invalid account!": "Neveljaven račun!",
-    "OIDC Connect": "OIDC Connect"
+    "OIDC Connect": "OIDC Connect",
+    "Load more": "Naloži več",
+    "Loading board...": "Nalaganje table..."
 }

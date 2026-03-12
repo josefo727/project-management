@@ -75,7 +75,7 @@
     "Only default statuses are listed when no projects selected": "Seuls les statuts par défaut sont répertoriés lorsqu'aucun projet n'est sélectionné",
     "Owner": "Propriétaire",
     "Owner:": "Propriétaire :",
-    "Owners / Responsibles": "Propriétaires / Responsables",
+    "Owners \/ Responsibles": "Propriétaires \/ Responsables",
     "Password confirmation": "Confirmation du mot de passe",
     "Performed at": "Effectué le",
     "Permission name": "Nom de la permission",
@@ -267,5 +267,7 @@
     "If enabled, any user can create an account in this platform. But an administration need to give them permissions.": "Si activé, n'importe quel utilisateur peut créer un compte sur cette plateforme. Mais une administration doit leur donner des autorisations.",
     "If enabled, configured users can login via their social accounts.": "Si activé, les utilisateurs configurés peuvent se connecter via leurs comptes sociaux.",
     "If enabled, a login form will be visible on the login page.": "Si activé, un formulaire de connexion sera visible sur la page de connexion.",
-    "If enabled, an OIDC Connect button will be visible on the login page.": "S'il est activé, un bouton OIDC Connect sera visible sur la page de connexion."
+    "If enabled, an OIDC Connect button will be visible on the login page.": "S'il est activé, un bouton OIDC Connect sera visible sur la page de connexion.",
+    "Load more": "Charger plus",
+    "Loading board...": "Chargement du tableau..."
 }

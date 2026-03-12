@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Alustan oletusrooli (käytetään pääasiassa OIDC Connectissa).",
     "OIDC Connect error": "OIDC Connect -virhe",
     "Invalid account!": "Virheellinen tili!",
-    "OIDC Connect": "OIDC-liitäntä"
+    "OIDC Connect": "OIDC-liitäntä",
+    "Load more": "Lataa lisää",
+    "Loading board...": "Ladataan taulua..."
 }

@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "תפקיד ברירת המחדל של הפלטפורמה (בשימוש בעיקר ב-OIDC Connect).",
     "OIDC Connect error": "שגיאת OIDC Connect",
     "Invalid account!": "חשבון שגוי!",
-    "OIDC Connect": "OIDC Connect"
+    "OIDC Connect": "OIDC Connect",
+    "Load more": "טען עוד",
+    "Loading board...": "טוען לוח..."
 }

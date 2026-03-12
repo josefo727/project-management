@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "الدور الافتراضي للنظام الأساسي (يُستخدم بشكل أساسي في OIDC Connect).",
     "OIDC Connect error": "خطأ في اتصال OIDC",
     "Invalid account!": "حساب غير صالح!",
-    "OIDC Connect": "اتصال OIDC"
+    "OIDC Connect": "اتصال OIDC",
+    "Load more": "تحميل المزيد",
+    "Loading board...": "جاري تحميل اللوحة..."
 }

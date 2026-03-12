@@ -30,36 +30,40 @@
         @endif
     </div>
 
-    @if($boardLoaded)
-        @push('scripts')
-            <script src="{{ asset('js/Sortable.js') }}"></script>
-            <script>
+    @push('scripts')
+        <script src="{{ asset('js/Sortable.js') }}"></script>
+        <script>
+            function initSortable() {
+                document.querySelectorAll('.status-container').forEach(function (container) {
+                    if (container._sortableInstance) {
+                        container._sortableInstance.destroy();
+                    }
+                    container._sortableInstance = Sortable.create(container, {
+                        group: {
+                            name: 'status-' + container.dataset.status,
+                            pull: true,
+                            put: true
+                        },
+                        handle: '.handle',
+                        filter: '.create-record, .load-more-btn',
+                        animation: 100,
+                        onEnd: function (evt) {
+                            Livewire.emit('recordUpdated',
+                                +evt.clone.dataset.id,
+                                +evt.newIndex,
+                                +evt.to.dataset.status,
+                            );
+                        },
+                    });
+                });
+            }
 
-                (() => {
-                    let record;
-                    @foreach($this->getStatuses() as $status)
-                        record = document.querySelector('#status-records-{{ $status['id'] }}');
-
-                        Sortable.create(record, {
-                            group: {
-                                name: 'status-{{ $status['id'] }}',
-                                pull: true,
-                                put: true
-                            },
-                            handle: '.handle',
-                            animation: 100,
-                            onEnd: function (evt) {
-                                Livewire.emit('recordUpdated',
-                                    +evt.clone.dataset.id, // id
-                                    +evt.newIndex, // newIndex
-                                    +evt.to.dataset.status, // newStatus
-                                );
-                            },
-                        })
-                    @endforeach
-                })();
-            </script>
-        @endpush
-    @endif
+            Livewire.hook('message.processed', function () {
+                if (document.querySelector('.status-container')) {
+                    initSortable();
+                }
+            });
+        </script>
+    @endpush
 
 </x-filament::page>

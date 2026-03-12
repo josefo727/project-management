@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Стандардната улога на платформата (се користи главно во OIDC Connect).",
     "OIDC Connect error": "Грешка за поврзување на OIDC",
     "Invalid account!": "Неважечка сметка!",
-    "OIDC Connect": "OIDC Connect"
+    "OIDC Connect": "OIDC Connect",
+    "Load more": "Вчитај повеќе",
+    "Loading board...": "Вчитување на таблата..."
 }

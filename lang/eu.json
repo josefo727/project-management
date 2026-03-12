@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Plataformaren rol lehenetsia (OIDC Connect-en erabiltzen da nagusiki).",
     "OIDC Connect error": "OIDC Konektatzeko errorea",
     "Invalid account!": "Kontu baliogabea!",
-    "OIDC Connect": "OIDC Konektatu"
+    "OIDC Connect": "OIDC Konektatu",
+    "Load more": "Kargatu gehiago",
+    "Loading board...": "Taula kargatzen..."
 }

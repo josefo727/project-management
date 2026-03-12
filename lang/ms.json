@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Peranan lalai platform (digunakan terutamanya dalam OIDC Connect).",
     "OIDC Connect error": "Ralat Sambungan OIDC",
     "Invalid account!": "Akaun tidak sah!",
-    "OIDC Connect": "Sambungan OIDC"
+    "OIDC Connect": "Sambungan OIDC",
+    "Load more": "Muatkan lagi",
+    "Loading board...": "Memuatkan papan..."
 }

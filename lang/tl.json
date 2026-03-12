@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Ang papel na default ng platform (pangunahing ginagamit sa OIDC Connect).",
     "OIDC Connect error": "Error sa OIDC Connect",
     "Invalid account!": "Di-wastong account!",
-    "OIDC Connect": "OIDC Connect"
+    "OIDC Connect": "OIDC Connect",
+    "Load more": "Mag-load pa",
+    "Loading board...": "Naglo-load ng board..."
 }

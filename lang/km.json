@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "តួនាទីលំនាំដើមរបស់វេទិកា (ប្រើជាចម្បងនៅក្នុង ODC Connect)។",
     "OIDC Connect error": "កំហុសក្នុងការភ្ជាប់ ODC",
     "Invalid account!": "គណនីមិនត្រឹមត្រូវ!",
-    "OIDC Connect": "ការតភ្ជាប់ ODC"
+    "OIDC Connect": "ការតភ្ជាប់ ODC",
+    "Load more": "ផ្ទុកបន្ថែម",
+    "Loading board...": "កំពុងផ្ទុកក្ដារ..."
 }

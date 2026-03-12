@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "პლატფორმის ნაგულისხმევი როლი (ძირითადად გამოიყენება OIDC Connect-ში).",
     "OIDC Connect error": "OIDC Connect-ის შეცდომა",
     "Invalid account!": "Არასწორი ანგარიში!",
-    "OIDC Connect": "OIDC დაკავშირება"
+    "OIDC Connect": "OIDC დაკავშირება",
+    "Load more": "მეტის ჩატვირთვა",
+    "Loading board...": "დაფის ჩატვირთვა..."
 }

@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Platformas noklusējuma loma (tiek izmantota galvenokārt OIDC Connect).",
     "OIDC Connect error": "OIDC savienojuma kļūda",
     "Invalid account!": "Nederīgs konts!",
-    "OIDC Connect": "OIDC savienojums"
+    "OIDC Connect": "OIDC savienojums",
+    "Load more": "Ielādēt vairāk",
+    "Loading board...": "Ielādē dēli..."
 }

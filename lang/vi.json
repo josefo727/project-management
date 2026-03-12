@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Vai trò mặc định của nền tảng (được sử dụng chủ yếu trong OIDC Connect).",
     "OIDC Connect error": "Lỗi kết nối OIDC",
     "Invalid account!": "Tài khoản không hợp lệ!",
-    "OIDC Connect": "Kết nối OIDC"
+    "OIDC Connect": "Kết nối OIDC",
+    "Load more": "Tải thêm",
+    "Loading board...": "Đang tải bảng..."
 }

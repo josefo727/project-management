@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "نقش پیش‌فرض پلتفرم (عمدتاً در OIDC Connect استفاده می‌شود).",
     "OIDC Connect error": "خطای اتصال OIDC",
     "Invalid account!": "حساب نامعتبر!",
-    "OIDC Connect": "اتصال OIDC"
+    "OIDC Connect": "اتصال OIDC",
+    "Load more": "بارگذاری بیشتر",
+    "Loading board...": "در حال بارگذاری تابلو..."
 }

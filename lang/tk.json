@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Platformanyň esasy roly (esasan OIDC Connect-de ulanylýar).",
     "OIDC Connect error": "OIDC birikdiriş säwligi",
     "Invalid account!": "Nädogry hasap!",
-    "OIDC Connect": "OIDC birikmesi"
+    "OIDC Connect": "OIDC birikmesi",
+    "Load more": "Has köp ýükle",
+    "Loading board...": "Tagta ýüklenýär..."
 }

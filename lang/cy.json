@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Rôl ddiofyn y platfform (a ddefnyddir yn bennaf yn OIDC Connect).",
     "OIDC Connect error": "Gwall Cyswllt OIDC",
     "Invalid account!": "Cyfrif annilys!",
-    "OIDC Connect": "Cyswllt OIDC"
+    "OIDC Connect": "Cyswllt OIDC",
+    "Load more": "Llwytho mwy",
+    "Loading board...": "Llwytho'r bwrdd..."
 }

@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Ο προεπιλεγμένος ρόλος της πλατφόρμας (χρησιμοποιείται κυρίως στο OIDC Connect).",
     "OIDC Connect error": "Σφάλμα σύνδεσης OIDC",
     "Invalid account!": "Μη έγκυρος λογαριασμός!",
-    "OIDC Connect": "Σύνδεση OIDC"
+    "OIDC Connect": "Σύνδεση OIDC",
+    "Load more": "Φόρτωση περισσότερων",
+    "Loading board...": "Φόρτωση πίνακα..."
 }

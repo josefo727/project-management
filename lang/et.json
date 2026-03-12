@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Platvormi vaikeroll (kasutatakse peamiselt OIDC Connectis).",
     "OIDC Connect error": "OIDC Connecti viga",
     "Invalid account!": "Kehtetu konto!",
-    "OIDC Connect": "OIDC ühendus"
+    "OIDC Connect": "OIDC ühendus",
+    "Load more": "Laadi rohkem",
+    "Loading board...": "Tahvli laadimine..."
 }

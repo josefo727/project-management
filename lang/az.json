@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Platformanın defolt rolu (əsasən OIDC Connect-də istifadə olunur).",
     "OIDC Connect error": "OIDC Connect xətası",
     "Invalid account!": "Yanlış hesab!",
-    "OIDC Connect": "OIDC Connect"
+    "OIDC Connect": "OIDC Connect",
+    "Load more": "Daha çox yüklə",
+    "Loading board...": "Lövhə yüklənir..."
 }

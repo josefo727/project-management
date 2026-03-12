@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Platformens standardrolle (bruges hovedsageligt i OIDC Connect).",
     "OIDC Connect error": "OIDC Connect fejl",
     "Invalid account!": "Ugyldig konto!",
-    "OIDC Connect": "OIDC Connect"
+    "OIDC Connect": "OIDC Connect",
+    "Load more": "Indlæs mere",
+    "Loading board...": "Indlæser board..."
 }

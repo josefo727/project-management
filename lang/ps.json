@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "د پلیټ فارم ډیفالټ رول (په عمده توګه د OIDC Connect کې کارول کیږي).",
     "OIDC Connect error": "د OIDC نښلولو تېروتنه",
     "Invalid account!": "ناسم حساب!",
-    "OIDC Connect": "OIDC نښلول"
+    "OIDC Connect": "OIDC نښلول",
+    "Load more": "نور پورته کړئ",
+    "Loading board...": "بورډ پورته کیږي..."
 }

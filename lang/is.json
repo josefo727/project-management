@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Sjálfgefið hlutverk pallsins (notað aðallega í OIDC Connect).",
     "OIDC Connect error": "OIDC Connect villa",
     "Invalid account!": "Ógildur reikningur!",
-    "OIDC Connect": "OIDC Connect"
+    "OIDC Connect": "OIDC Connect",
+    "Load more": "Hlaða meira",
+    "Loading board...": "Hleð borð..."
 }

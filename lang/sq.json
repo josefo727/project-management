@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Roli i parazgjedhur i platformës (përdoret kryesisht në OIDC Connect).",
     "OIDC Connect error": "Gabim i lidhjes OIDC",
     "Invalid account!": "Llogari e pavlefshme!",
-    "OIDC Connect": "Lidhja OIDC"
+    "OIDC Connect": "Lidhja OIDC",
+    "Load more": "Ngarko më shumë",
+    "Loading board...": "Duke ngarkuar tabelën..."
 }

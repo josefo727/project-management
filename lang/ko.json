@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "플랫폼 기본 역할(주로 OIDC Connect에서 사용됨).",
     "OIDC Connect error": "OIDC 연결 오류",
     "Invalid account!": "계정이 잘못되었습니다!",
-    "OIDC Connect": "OIDC 연결"
+    "OIDC Connect": "OIDC 연결",
+    "Load more": "더 불러오기",
+    "Loading board...": "보드 로딩 중..."
 }

@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "سۇپا سۈكۈتتىكى رولى (ئاساسلىقى OIDC ئۇلىنىشىدا ئىشلىتىلىدۇ).",
     "OIDC Connect error": "OIDC ئۇلىنىش خاتالىقى",
     "Invalid account!": "ئىناۋەتسىز ھېسابات!",
-    "OIDC Connect": "OIDC ئۇلىنىش"
+    "OIDC Connect": "OIDC ئۇلىنىش",
+    "Load more": "تېخىمۇ كۆپ يۈكلەش",
+    "Loading board...": "تاختا يۈكلىنىۋاتىدۇ..."
 }

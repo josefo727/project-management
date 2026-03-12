@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Нақши пешфарз платформа (асосан дар OIDC Connect истифода мешавад).",
     "OIDC Connect error": "Хатогии OIDC Connect",
     "Invalid account!": "Ҳисоби нодуруст!",
-    "OIDC Connect": "OIDC Connect"
+    "OIDC Connect": "OIDC Connect",
+    "Load more": "Бештар бор кунед",
+    "Loading board...": "Тахта бор мешавад..."
 }

@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Platformos numatytasis vaidmuo (daugiausia naudojamas OIDC Connect).",
     "OIDC Connect error": "OIDC Connect klaida",
     "Invalid account!": "Neteisinga paskyra!",
-    "OIDC Connect": "OIDC prijungimas"
+    "OIDC Connect": "OIDC prijungimas",
+    "Load more": "Įkelti daugiau",
+    "Loading board...": "Kraunama lenta..."
 }

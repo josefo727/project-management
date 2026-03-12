@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Rolul implicit al platformei (utilizat în principal în OIDC Connect).",
     "OIDC Connect error": "Eroare de conectare OIDC",
     "Invalid account!": "Cont invalid!",
-    "OIDC Connect": "OIDC Connect"
+    "OIDC Connect": "OIDC Connect",
+    "Load more": "Încarcă mai multe",
+    "Loading board...": "Se încarcă tabla..."
 }

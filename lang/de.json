@@ -268,5 +268,7 @@
     "If enabled, configured users can login via their social accounts.": "Wenn diese Option aktiviert ist, können sich konfigurierte Benutzer über ihre sozialen Konten anmelden.",
     "If enabled, a login form will be visible on the login page.": "Wenn diese Option aktiviert ist, wird ein Anmeldeformular auf der Anmeldeseite angezeigt.",
     "If enabled, an OIDC Connect button will be visible on the login page.": "Wenn diese Funktion aktiviert ist, wird auf der Anmeldeseite eine Schaltfläche OIDC Connect angezeigt.",
-    "The creation of a new Sprint will create a linked Epic into to the Road Map": "Die Erstellung eines neuen Sprints erstellt ein mit der Roadmap verknüpften Epic"
+    "The creation of a new Sprint will create a linked Epic into to the Road Map": "Die Erstellung eines neuen Sprints erstellt ein mit der Roadmap verknüpften Epic",
+    "Load more": "Mehr laden",
+    "Loading board...": "Board wird geladen..."
 }

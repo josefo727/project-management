@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Jukumu chaguo-msingi la jukwaa (hutumiwa hasa katika OIDC Connect).",
     "OIDC Connect error": "Hitilafu ya OIDC Connect",
     "Invalid account!": "Akaunti batili!",
-    "OIDC Connect": "Unganisha OIDC"
+    "OIDC Connect": "Unganisha OIDC",
+    "Load more": "Pakia zaidi",
+    "Loading board...": "Inapakia ubao..."
 }

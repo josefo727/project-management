@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "प्लेटफर्म पूर्वनिर्धारित भूमिका (मुख्य रूपमा OIDC जडानमा प्रयोग गरिन्छ)।",
     "OIDC Connect error": "OIDC जडान त्रुटि",
     "Invalid account!": "अवैध खाता!",
-    "OIDC Connect": "OIDC जडान"
+    "OIDC Connect": "OIDC जडान",
+    "Load more": "थप लोड गर्नुहोस्",
+    "Loading board...": "बोर्ड लोड हुँदैछ..."
 }

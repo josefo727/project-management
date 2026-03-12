@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Платформаның әдепкі рөлі (негізінен OIDC Connect жүйесінде пайдаланылады).",
     "OIDC Connect error": "OIDC қосылу қатесі",
     "Invalid account!": "Жарамсыз тіркелгі!",
-    "OIDC Connect": "OIDC қосылымы"
+    "OIDC Connect": "OIDC қосылымы",
+    "Load more": "Көбірек жүктеу",
+    "Loading board...": "Тақта жүктелуде..."
 }

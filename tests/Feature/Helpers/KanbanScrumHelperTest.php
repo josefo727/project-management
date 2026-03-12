@@ -290,4 +290,51 @@ class KanbanScrumHelperTest extends TestCase
         $recordsAfter = $component->instance()->getRecords();
         $this->assertCount(2, $recordsAfter);
     }
+
+    public function test_get_visible_limit_defaults_to_records_per_status(): void
+    {
+        $this->actingAs($this->owner);
+
+        $component = Livewire::test(\App\Filament\Pages\Kanban::class, ['project' => $this->project]);
+
+        $this->assertEquals(20, $component->instance()->getVisibleLimit($this->status->id));
+    }
+
+    public function test_load_more_increases_visible_limit(): void
+    {
+        $this->actingAs($this->owner);
+
+        $component = Livewire::test(\App\Filament\Pages\Kanban::class, ['project' => $this->project])
+            ->call('loadMore', $this->status->id);
+
+        $this->assertEquals(40, $component->instance()->getVisibleLimit($this->status->id));
+    }
+
+    public function test_filter_resets_visible_limits(): void
+    {
+        $this->actingAs($this->owner);
+
+        $component = Livewire::test(\App\Filament\Pages\Kanban::class, ['project' => $this->project])
+            ->call('loadMore', $this->status->id)
+            ->call('filter');
+
+        $this->assertEquals(20, $component->instance()->getVisibleLimit($this->status->id));
+    }
+
+    public function test_load_more_button_shown_when_records_exceed_limit(): void
+    {
+        $this->actingAs($this->owner);
+
+        Ticket::factory()->count(25)->create([
+            'project_id' => $this->project->id,
+            'owner_id' => $this->owner->id,
+            'status_id' => $this->status->id,
+            'type_id' => $this->type->id,
+            'priority_id' => $this->priority->id,
+        ]);
+
+        Livewire::test(\App\Filament\Pages\Kanban::class, ['project' => $this->project])
+            ->call('loadBoard')
+            ->assertSee(__('Load more') . ' (5)');
+    }
 }

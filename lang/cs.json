@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Výchozí role platformy (používá se hlavně v OIDC Connect).",
     "OIDC Connect error": "Chyba připojení OIDC",
     "Invalid account!": "Neplatný účet!",
-    "OIDC Connect": "Připojení OIDC"
+    "OIDC Connect": "Připojení OIDC",
+    "Load more": "Načíst více",
+    "Loading board...": "Načítání nástěnky..."
 }

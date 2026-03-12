@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Роль платформы по умолчанию (используется в основном в OIDC Connect).",
     "OIDC Connect error": "Ошибка подключения OIDC",
     "Invalid account!": "Неверный аккаунт!",
-    "OIDC Connect": "OIDC Connect"
+    "OIDC Connect": "OIDC Connect",
+    "Load more": "Загрузить ещё",
+    "Loading board...": "Загрузка доски..."
 }

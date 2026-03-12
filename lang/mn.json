@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Платформын өгөгдмөл үүрэг (OIDC Connect-д голчлон ашигладаг).",
     "OIDC Connect error": "OIDC холболтын алдаа",
     "Invalid account!": "Буруу данс!",
-    "OIDC Connect": "OIDC холболт"
+    "OIDC Connect": "OIDC холболт",
+    "Load more": "Илүү ачаалах",
+    "Loading board...": "Самбар ачаалж байна..."
 }

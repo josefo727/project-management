@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Platform varsayılan rolü (esas olarak OIDC Connect'te kullanılır).",
     "OIDC Connect error": "OIDC Bağlantı hatası",
     "Invalid account!": "Geçersiz hesap!",
-    "OIDC Connect": "OIDC Bağlantısı"
+    "OIDC Connect": "OIDC Bağlantısı",
+    "Load more": "Daha fazla yükle",
+    "Loading board...": "Pano yükleniyor..."
 }

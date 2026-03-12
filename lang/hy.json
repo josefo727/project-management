@@ -261,5 +261,7 @@
     "The platform default role (used mainly in OIDC Connect).": "Պլատֆորմի լռելյայն դերը (հիմնականում օգտագործվում է OIDC Connect-ում):",
     "OIDC Connect error": "OIDC Connect-ի սխալ",
     "Invalid account!": "Անվավեր հաշիվ:",
-    "OIDC Connect": "OIDC Connect"
+    "OIDC Connect": "OIDC Connect",
+    "Load more": "Բեռնել ավելին",
+    "Loading board...": "Վահանակի բեռնում..."
 }
