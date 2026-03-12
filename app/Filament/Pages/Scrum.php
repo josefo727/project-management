@@ -36,7 +36,7 @@ class Scrum extends Page implements HasForms
         } elseif (
             $this->project->owner_id != auth()->user()->id
             &&
-            !$this->project->users->where('id', auth()->user()->id)->count()
+            !$this->project->users()->where('users.id', auth()->user()->id)->exists()
         ) {
             abort(403);
         }

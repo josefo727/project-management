@@ -21,6 +21,7 @@ trait KanbanScrumHelper
 {
 
     public bool $sortable = true;
+    public bool $boardLoaded = false;
 
     public Project|null $project = null;
 
@@ -124,7 +125,7 @@ trait KanbanScrumHelper
         if ($this->project->type === 'scrum') {
             $query->where('sprint_id', $this->project->currentSprint->id);
         }
-        $query->with(['project', 'owner', 'responsible', 'status', 'type', 'priority', 'epic', 'relations.relation', 'hours']);
+        $query->with(['project', 'owner', 'responsible', 'status', 'type', 'priority', 'epic', 'relations.relation:id,code', 'hours']);
         $query->where('project_id', $this->project->id);
         if (sizeof($this->users)) {
             $query->where(function ($query) {
@@ -141,17 +142,6 @@ trait KanbanScrumHelper
         if ($this->includeNotAffectedTickets) {
             $query->whereNull('responsible_id');
         }
-        $query->where(function ($query) {
-            return $query->where('owner_id', auth()->user()->id)
-                ->orWhere('responsible_id', auth()->user()->id)
-                ->orWhereHas('project', function ($query) {
-                    return $query->where('owner_id', auth()->user()->id)
-                        ->orWhereHas('users', function ($query) {
-                            return $query->where('users.id', auth()->user()->id);
-                        });
-                });
-        });
-
         $this->cachedRecords = $query->get()
             ->map(fn(Ticket $item) => [
                 'id' => $item->id,
@@ -182,6 +172,11 @@ trait KanbanScrumHelper
             $this->cachedRecords = null;
             $this->cachedStatuses = null;
         }
+    }
+
+    public function loadBoard(): void
+    {
+        $this->boardLoaded = true;
     }
 
     public function isMultiProject(): bool
